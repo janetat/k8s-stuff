@@ -9,6 +9,7 @@
 - [6. 跑一个临时busybox容器](#6-跑一个临时busybox容器)
 - [7. 重启coredns](#7-重启coredns)
 - [8. kubeadm reset](#8-kubeadm-reset)
+- [9. kubeadm join](#9-kubeadm-join)
 
 # 1. 获取最新 API version
 ```
@@ -82,4 +83,9 @@ ip link delete flannel.1
 systemctl start kubelet
 
 systemctl start docker
+```
+
+# 9. kubeadm join
+```
+kubeadm token create --print-join-command
 ```
