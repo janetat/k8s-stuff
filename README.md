@@ -2,7 +2,7 @@
 
 - [My k8s cheatsheet](#my-k8s-cheatsheet)
 - [1. 获取最新 API version](#1-获取最新-api-version)
-- [2. 把pod调度到master或者不调度到master](#2-把pod调度到master或者不调度到master)
+- [2. master也参与调度](#2-master也参与调度)
 - [3. 获取labels](#3-获取labels)
 - [4. 获取所有namespaces的pods](#4-获取所有namespaces的pods)
 - [5. 拿到类似yaml配置文件的信息](#5-拿到类似yaml配置文件的信息)
@@ -18,7 +18,7 @@
 for kind in `kubectl api-resources | tail +2 | awk '{ print $1 }'`; do kubectl explain $kind; done | grep -e "KIND:" -e "VERSION:"
 ```
 
-# 2. 把pod调度到master或者不调度到master
+# 2. master也参与调度
 为什么要调度到master: 因为我只有两个node去学习
 
 所有nodes参与调度
