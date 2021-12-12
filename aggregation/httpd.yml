@@ -30,5 +30,8 @@ spec:
     run: httpd
   ports:
   - protocol: TCP
-    port: 9998
-    targetPort: 80
+    # 底层都是iptables，去实现负载均衡 nodePort -> port -> targetPort
+    nodePort: 30000   # node监听的端口
+    port: 9998  # ClusterIP监听的端口
+    targetPort: 80  # Pod监听的端口
+    
