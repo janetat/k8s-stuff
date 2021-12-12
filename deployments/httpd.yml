@@ -5,6 +5,9 @@ metadata:
   namespace: kube-public
 spec:
   replicas: 3
+  selector:
+    matchLabels:
+      run: httpd
   template:
     metadata:
       labels:
