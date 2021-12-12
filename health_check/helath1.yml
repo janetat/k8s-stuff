@@ -3,11 +3,11 @@ kind: Pod
 metadata:
   labels:
     app: healthcheck
-  name: health_check
+  name: healthcheck
 spec:
   restartPolicy: OnFailure
   containers:
-  - name: health_check
+  - name: healthcheck
     image: busybox
     args:
     - /bin/sh
