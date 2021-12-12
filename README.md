@@ -11,6 +11,7 @@
 - [8. kubeadm reset](#8-kubeadm-reset)
 - [9. kubeadm join](#9-kubeadm-join)
 - [10. Kubernetes 修改 kube-porxy 为ipvs 模式](#10-kubernetes-修改-kube-porxy-为ipvs-模式)
+- [11. tcpdump抓包](#11-tcpdump抓包)
 
 # 1. 获取最新 API version
 ```
@@ -93,3 +94,9 @@ kubeadm token create --print-join-command
 
 # 10. Kubernetes 修改 kube-porxy 为ipvs 模式
 https://chenjiandongx.me/2021/02/06/k8s-ipvs-mode/
+
+
+# 11. tcpdump抓包
+```
+tcpdump -i flannel.1
+```
