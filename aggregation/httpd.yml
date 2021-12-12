@@ -25,6 +25,7 @@ metadata:
   name: httpd-svc
   namespace: kube-public
 spec:
+  type: NodePort
   selector:
     run: httpd
   ports:
