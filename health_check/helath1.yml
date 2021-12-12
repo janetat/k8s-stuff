@@ -1,3 +1,5 @@
+# 每个容器启动时都会执行一个进程，此进程由Dockerfile的CMD或ENTRYPOINT指定。如果进程退出时返回码非零，则认为容器发生故障，Kubernetes就会根据restartPolicy重启容器。
+
 apiVersion: v1
 kind: Pod
 metadata:

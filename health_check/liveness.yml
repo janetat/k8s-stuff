@@ -1,0 +1,25 @@
+# 有不少情况是发生了故障，但进程并不会退出。比如访问Web服务器时显示500内部错误，可能是系统超载，也可能是资源死锁，此时httpd进程并没有异常退出，在这种情况下重启容器可能是最直接、最有效的解决方案是Liveness
+# Liveness探测让用户可以自定义判断容器是否健康的条件。如果探测失败，Kubernetes就会重启容器。
+
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: liveness
+  name: liveness
+spec:
+  restartPolicy: OnFailure
+  containers:
+  - name: liveness
+    image: busybox
+    args:
+    - /bin/sh
+    - -c
+    - touch /tmp/healthy; sleep 30; rm -rf /tmp/healthy; sleep 60
+    livenessProbe:
+      exec:
+        command:
+        - cat
+        - /tmp/healthy
+      initialDelaySeconds: 10
+      periodSeconds: 5
