@@ -15,7 +15,7 @@ spec:
     - /bin/sh
     - -c
     - touch /tmp/healthy; sleep 30; rm -rf /tmp/healthy; sleep 60
-    readnessProbe:
+    readinessProbe:
       exec:
         command:
         - cat
