@@ -1,0 +1,1 @@
+# 将host目录映射给pod容器，实际上增加了Pod与节点的耦合，限制了Pod的使用。不过那些需要访问Kubernetes或Docker内部数据（配置文件和二进制库）的应用则需要使用hostPath。比如kube-apiserver和kube-controller-manager
