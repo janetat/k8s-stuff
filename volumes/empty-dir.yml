@@ -4,7 +4,7 @@ metadata:
   name: producer-consumer
 spec:
   containers:
-  - image: busybox
+  - image: busybox:stable
     name: producer
     volumeMounts:
     - mountPath: /producer_dir
@@ -14,13 +14,13 @@ spec:
     - -c
     - echo "Hello, this is emptydir volume test" > /producer_dir/hello; sleep 300
 
-  - image: busybox
+  - image: busybox:stable
     name: consumer
     volumeMounts:
     - mountPath: /consumer_dir
       name: shared-volume
     args:
-    - /bin/sh/
+    - /bin/sh
     - -c
     - cat /consumer_dir/hello; sleep 300
 
