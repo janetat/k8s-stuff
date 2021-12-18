@@ -24,6 +24,7 @@ spec:
     - -c
     - cat /consumer_dir/hello; sleep 300
 
+  # 适合Pod中的容器需要临时共享存储空间的场景，生命周期跟着Pod走
   volumes:
   - name: shared-volume
     emptyDir: {}
