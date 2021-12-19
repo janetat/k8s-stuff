@@ -12,3 +12,4 @@ data:
   foo.conf: |
     NAME: digi ghetto
     COMMENT: flip
+    ccccccccc=1
