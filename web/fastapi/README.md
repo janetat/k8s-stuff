@@ -2,7 +2,7 @@
 
 # heatup python environment
 ```
-virtualenv --no-site-packages .venv 
+virtualenv .venv 
 source .venv/bin/activate
 pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/ 
 ```
