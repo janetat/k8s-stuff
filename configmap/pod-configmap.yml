@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-try-configmap
+spec:
+  containers:
+  - name: pod-try-configmap
+    image: busybox:stable
+    args:
+      - /bin/sh
+      - -c
+      - sleep 10; touch /tmp/healthy; sleep 300
+    volumeMounts:
+    - name: configmap
+      mountPath: "/configmap"
+
+  volumes:
+  - name: configmap
+    configMap:
+      name: myconfigmap
+      items:
+      - key: logging.conf
+        path: logs/logging.conf
+      
+      - key: foo.conf
+        path: foo/foo.conf
