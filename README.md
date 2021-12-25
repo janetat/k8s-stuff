@@ -12,7 +12,7 @@
 - [9. kubeadm join](#9-kubeadm-join)
 - [10. Kubernetes 修改 kube-porxy 为ipvs 模式](#10-kubernetes-修改-kube-porxy-为ipvs-模式)
 - [11. tcpdump抓包](#11-tcpdump抓包)
-- [12. 外网访问dashboard（不安全）](#12-外网访问dashboard不安全)
+- [12. 外网快速访问dashboard（不安全）](#12-外网快速访问dashboard不安全)
 
 # 1. 获取最新 API version
 ```
@@ -102,7 +102,11 @@ https://chenjiandongx.me/2021/02/06/k8s-ipvs-mode/
 tcpdump -i flannel.1
 ```
 
-# 12. 外网访问dashboard（不安全）
+# 12. 外网快速访问dashboard（不安全）
 ```
 kubectl proxy --address='0.0.0.0' -p 9999 --disable-filter=true
+http://{internet_ip}:9999/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
+```
+```
+https://github.com/kubernetes/dashboard/blob/master/docs/user/accessing-dashboard/README.md
 ```
