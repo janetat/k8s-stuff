@@ -13,6 +13,9 @@
 - [10. Kubernetes 修改 kube-porxy 为ipvs 模式](#10-kubernetes-修改-kube-porxy-为ipvs-模式)
 - [11. tcpdump抓包](#11-tcpdump抓包)
 - [12. 外网快速访问dashboard（不安全）](#12-外网快速访问dashboard不安全)
+- [13. 对外暴露服务，使用端口转发（只适合临时测试用，不安全）](#13-对外暴露服务使用端口转发只适合临时测试用不安全)
+- [14. 对外暴露服务，通过NodePort](#14-对外暴露服务通过nodeport)
+- [15. 对外暴露服务，通过LoadBalancer](#15-对外暴露服务通过loadbalancer)
 
 # 1. 获取最新 API version
 ```
@@ -109,4 +112,31 @@ http://{internet_ip}:9999/api/v1/namespaces/kubernetes-dashboard/services/https:
 ```
 ```
 https://github.com/kubernetes/dashboard/blob/master/docs/user/accessing-dashboard/README.md
+```
+
+# 13. 对外暴露服务，使用端口转发（只适合临时测试用，不安全）
+```
+kubectl port-forward --address 0.0.0.0 svc/test-k8s 8090:8090
+```
+
+# 14. 对外暴露服务，通过NodePort
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: test-k8s
+spec:
+  selector:
+    app: test-k8s
+  # 默认 ClusterIP 集群内可访问，NodePort 节点可访问，LoadBalancer 负载均衡模式（需要负载均衡器才可用）
+  type: NodePort
+  ports:
+    - port: 8090        # 本 Service 的端口
+      targetPort: 8080  # 容器端口
+      nodePort: 31000   # 节点端口，范围固定 30000 ~ 32767
+```
+
+# 15. 对外暴露服务，通过LoadBalancer
+```yaml
+
 ```
