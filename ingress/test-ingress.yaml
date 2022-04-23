@@ -28,3 +28,8 @@ spec:
             name: test-k8s-2
             port:
               number: 8091
+
+
+
+# 在内网集群中curl ingress svc没问题的话，如果需要外网**临时**访问集群，可以用端口转发，把流量导入到ingress
+#  kubectl port-forward --address 0.0.0.0 svc/ingress-nginx-controller 8090:80 -n ingress-nginx
