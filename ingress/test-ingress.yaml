@@ -1,0 +1,30 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: test-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  defaultBackend:
+    service:
+      name: helm-hello
+      port:
+        number: 80
+  rules:
+   - http:
+      paths:
+      - path: /svc1
+        pathType: Prefix
+        backend:
+          service:
+            name: test-k8s
+            port:
+              number: 8090
+      - path: /svc2
+        pathType: Prefix
+        backend:
+          service:
+            name: test-k8s-2
+            port:
+              number: 8091
