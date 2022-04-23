@@ -15,7 +15,6 @@
 - [12. 外网快速访问dashboard（不安全）](#12-外网快速访问dashboard不安全)
 - [13. 对外暴露服务，使用端口转发（只适合临时测试用，不安全）](#13-对外暴露服务使用端口转发只适合临时测试用不安全)
 - [14. 对外暴露服务，通过NodePort](#14-对外暴露服务通过nodeport)
-- [15. 对外暴露服务，通过LoadBalancer](#15-对外暴露服务通过loadbalancer)
 
 # 1. 获取最新 API version
 ```
@@ -134,9 +133,4 @@ spec:
     - port: 8090        # 本 Service 的端口
       targetPort: 8080  # 容器端口
       nodePort: 31000   # 节点端口，范围固定 30000 ~ 32767
-```
-
-# 15. 对外暴露服务，通过LoadBalancer
-```yaml
-
 ```
