@@ -8,9 +8,9 @@ spec:
   ingressClassName: nginx
   defaultBackend:
     service:
-      name: helm-hello
+      name: nginx-svc
       port:
-        number: 80
+        number: 9999
   rules:
    - http:
       paths:
