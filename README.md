@@ -44,6 +44,7 @@ kubectl get nodes --show-labels
 # 4. 获取所有namespaces的pods
 ```
 kubectl get pods --all-namespaces
+kubectl get pods -A
 ```
 
 # 5. 拿到类似yaml配置文件的信息
