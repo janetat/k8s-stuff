@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: time-demo
+  labels:
+    app: time
+spec:
+  volumes:
+  - name: host-time
+    hostPath:
+      path: /etc/localtime
+  containers:
+  - name: time-demo
+    image: nginx
+    volumeMounts:
+    - name: host-time
+      mountPath: /etc/localtime
+    ports:
+    - containerPort: 80
