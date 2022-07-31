@@ -1,0 +1,24 @@
+# kubectl get -w pods -l app=nginx-hpa
+# kubectl run -it --image busybox:1.35 test-hpa --restart=Never --rm /bin/sh
+# while true; do wget -q -O- http://10.244.4.97; done
+# vim /etc/kubernetes/manifests/kube-controller-manager.yaml
+# --horizontal-pod-autoscaler-downscale-stabilization=0m10s
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hpa-demo
+  namespace: default
+spec:
+  minReplicas: 1
+  maxReplicas: 10
+  metrics:
+  - resource:
+      name: cpu
+      target:
+        averageUtilization: 10
+        type: Utilization
+    type: Resource
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: hpa-demo
